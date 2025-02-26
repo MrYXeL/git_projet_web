@@ -1,12 +1,21 @@
-let couleur = ["rouge", "bleu", "vert", "jaune", "blanc", "orange"]
+var couleurs = ["rouge", "bleu", "vert", "jaune"];
 
-function suite_aleatoire{
-	let suite;
-	for (var i = 0; i >= 5; i++) {
-		suite[i] = Math.random(0, 5);
-	}
-	return suite
+function couleur_aleatoire(){
+	return couleurs[Math.floor(Math.random() * 4)];
 }
 
-console.log(suite_aleatoire())
-//Rouge Bleu Vert Jaune Blanc Orange
+//console.log(couleur_aleatoire());		//Test la couleur aléatoire
+
+function on_continue(){
+	null;
+}
+
+function jeu(){
+	var suite = [];
+	var jeu_en_cour = true;
+	while(jeu_en_cour = true){
+		couleur = couleur_aleatoire();
+		suite.push(couleur);
+		console.log(suite);
+	};
+}

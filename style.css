@@ -1,0 +1,22 @@
+.bouton_bleu{
+    background-color: blue;
+}
+
+.bouton_rouge{
+    background-color: red;
+}
+
+.bouton_vert{
+    background-color: green;
+}
+
+.bouton_jaune{
+    background-color: yellow;
+}
+
+input[type="button"]{
+    margin:  10px;
+    width:  100px;
+    height: 100px;
+    color: black;
+}
