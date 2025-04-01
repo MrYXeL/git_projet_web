@@ -5,11 +5,10 @@ function couleur_aleatoire(){
 	return couleurs[Math.floor(Math.random() * 4)];
 }
 
-//console.log(couleur_aleatoire());		//Test la couleur aléatoire
-
 function on_continue(suite){
 	//Montre la suite au joueur
 	for(var i = 0; i < suite.length; i++){
+
 		if (suite[i] == "rouge"){
 			document.getElementById("rouge").style.backgroundColor = "rgb(255,80,80)";
 			son["rouge"].play();
@@ -51,3 +50,5 @@ function jeu(){
 
 //pour sleep() on peut faire avec datetime (prendre le time de maintenant et le comparer avec le time de maintenant + le temps qu'on veut attendre)
 //voir setIntervall()
+
+//await()
