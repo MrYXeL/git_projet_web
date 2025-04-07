@@ -37,4 +37,5 @@ input[type="button"]{
     height: 175px;
     color: black;
     border-width: 5px;
+    cursor: pointer;
 }

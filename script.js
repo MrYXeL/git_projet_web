@@ -74,7 +74,9 @@ async function jeu(){
         await afficherSequence(suite)
         await delay(1000); // Pause avant que le joueur commence à jouer
         document.getElementById("statut").innerText = "À toi de jouer !";
+        let temps = Date.now()
         continueJeu = await jouer(suite)
+        document.getElementById("temps").innerHTML = "Temps de réaction : " + (Date.now() - temps) / 1000 +" s";
     }
 }
 
