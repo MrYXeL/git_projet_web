@@ -15,6 +15,7 @@ function couleur_aleatoire() {
 }
 
 async function afficherSequence(sequence){
+    await delay(1000); // Attendre 1 seconde pour finir le son du joueur
     const boutons = document.querySelectorAll("input");
     boutons.forEach(bouton => bouton.disabled = true); // Désactiver les boutons
 
@@ -38,9 +39,11 @@ async function jouer(sequence) {
 
         // Ajouter un écouteur d'événement sur chaque bouton
         boutons.forEach(bouton => {
+            let temps = Date.now()
             bouton.addEventListener("click", function handleClick() {
                 const couleurCliquee = this.id;
                 joueurSequence.push(couleurCliquee);
+                son[couleurCliquee].play(); // Jouer le son correspondant
 
                 // Vérifier si la séquence du joueur est correcte jusqu'à présent
                 for (let i = 0; i < joueurSequence.length; i++) {
@@ -54,6 +57,7 @@ async function jouer(sequence) {
                 // Si la séquence est complète et correcte
                 if (joueurSequence.length === sequence.length) {
                     boutons.forEach(b => b.removeEventListener("click", handleClick)); // Supprimer les écouteurs
+                    document.getElementById("temps").innerHTML = "Temps de réaction : " + (Date.now() - temps) / 1000 +" s";
                     resolve(1); // Retourner 1 si la séquence est correcte
                 }
             });
@@ -72,11 +76,12 @@ async function jeu(){
 
         document.getElementById("statut").innerText = "Regarde la séquence !";
         await afficherSequence(suite)
-        await delay(1000); // Pause avant que le joueur commence à jouer
         document.getElementById("statut").innerText = "À toi de jouer !";
-        let temps = Date.now()
         continueJeu = await jouer(suite)
-        document.getElementById("temps").innerHTML = "Temps de réaction : " + (Date.now() - temps) / 1000 +" s";
+        document.getElementById("niveau").innerText = "Niveau : " + suite.length;
+        if (continueJeu == 0){
+            document.getElementById("temps").innerHTML = "Perdu";
+        }
     }
 }
 
